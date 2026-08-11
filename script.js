@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Copy Email Utility
 function copyEmail() {
-  const email = "haridass@email.com";
+  const email = "haridass.ece@gmail.com";
   navigator.clipboard.writeText(email).then(() => {
     alert("Email address copied to clipboard: " + email);
   }).catch(err => {
