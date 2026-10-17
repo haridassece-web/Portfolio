@@ -66,7 +66,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.dataset.certFilter;
 
       certCards.forEach(card => {
-        if (filter === 'all' || card.dataset.certCategory === filter) {
+        const categories = (card.dataset.certCategory || '').trim().split(/\s+/);
+        if (filter === 'all' || categories.includes(filter)) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
+
+  // 3.5 Skill Category Filtering
+  const skillFilterBtns = document.querySelectorAll('.skill-filter-btn');
+  const skillCards = document.querySelectorAll('.skill-category-card[data-skill-category]');
+
+  skillFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      skillFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.skillFilter;
+
+      skillCards.forEach(card => {
+        const categories = (card.dataset.skillCategory || '').trim().split(/\s+/);
+        if (filter === 'all' || categories.includes(filter)) {
           card.style.display = 'flex';
           card.style.opacity = '1';
         } else {
