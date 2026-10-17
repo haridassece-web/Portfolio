@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.dataset.filter;
 
       projectCards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
+        const categories = (card.dataset.category || '').trim().split(/\s+/);
+        if (filter === 'all' || categories.includes(filter)) {
           card.style.display = 'flex';
           card.style.opacity = '1';
         } else {
